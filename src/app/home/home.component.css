@@ -1,0 +1,38 @@
+.container-fluid{
+    padding-left: 2%;
+    padding-top: 2%;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    background: purple;
+    height: 38px;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+carDiv{
+    padding: 0px 10px 20px;
+}
+.connected{
+    background-color: green;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border:1px solid white;
+    z-index: 1000;
+    display: inline-block;
+}
+.disconnected{
+    background-color: red;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border:1px solid white;
+    z-index: 1000;
+    display: inline-block;
+}

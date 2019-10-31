@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <div class=row>
+        <div class="col-3">
+            <div class="row">
+                <div class="col">
+                    <div class="header">Filter</div>
+                </div>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="interval">Status check interval</label>
+                    <div class="row">
+                        <div class="col-9">
+                            <input type="text" class="form-control" name="interval" #step
+                                style="border:none; border-bottom: 1px solid;" [(ngModel)]="interval" 
+                                [ngModelOptions]="{standalone: true}" required (change)="setStep(step.value)"> </div>
+                        <div class="col-2"><label>Seconds</label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="status">Filter by Connection Status</label>
+                    <select placeholder="Status" class="form-control" required name="status" #statusId [(ngModel)]="status" (change)="updateStatus(statusId.value)">
+                        <option *ngFor="let st of statusArr" [value]="st.value" >
+                            {{st.viewValue}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filter">Filter by Name</label>
+                    <ul>
+                        <li *ngFor="let owner of owners">
+                            <input type="checkbox" (change)="updateOwners(owner.id)">&nbsp;&nbsp;{{owner.name}}
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        <div class="col-8" style="padding-left: 30px;" *ngIf="vehicles.length>0">
+            <div class="row">
+                <div class="col">
+                    <div class="header">Vehicles</div>
+                </div>
+            </div>
+            <div class="row" *ngFor="let vehicleArr of vehicles" style="padding: 16px;">
+                <div class="col-6 carDiv" *ngFor="let vehicle of vehicleArr">
+                    <div class="row">
+                        <img src="assets/{{vehicle.imagePath}}">
+                        <span [ngClass]="{'connected':vehicle.status=='Connected', 'disconnected':vehicle.status=='Disconnected'}"></span>
+                    </div>
+                    <div class="row">
+                        <span>
+                            <p style="font-weight: bold;">Vehicle Id:{{vehicle.vehicleId}}</p>
+                            <p style="color:gray;">Registration #:{{vehicle.regNumber}}</p>
+                        </span>
+                    </div>
+                    <div class="row">
+                        <span>
+                            <p style="font-weight: bold;">Owner Name:{{vehicle.owner.name}}</p>
+                            <p style="color:gray;">Owner Address:{{vehicle.owner.address}}</p>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
