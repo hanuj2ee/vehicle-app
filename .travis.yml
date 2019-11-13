@@ -21,3 +21,10 @@ install:
 script:
   - npm build --prod
 
+deploy:
+  provider: s3
+  bucket: "vehicle-app"
+  skip_cleanup: true
+  acl: public_read
+  region: us-east-2
+  local_dir: dist
