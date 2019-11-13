@@ -20,4 +20,8 @@ cache:
     - ./node_modules
 
 install:
-  - npm build
+  - npm install
+
+script:
+  - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+
