@@ -3,28 +3,27 @@ env:
     secure: U951ERKryL4D+rmJCDEAKREQZ54zQA6HU4RQpQ4L78r5juK2fC+wSVYBTyb3hdTjQ+xTQ4t61MbR0OI+un5RXI3zDYeuOJLIsB29f8bh7D3TEv4Y+fGQTS9hXPLko+LixdFfC8Xil9X1XI5BrWQqagNXdt0c08vcmoZ1Y1IalSk94hG1dVjrHktYHav/wD8LG+oTfbcDWXf8EROkmP3e5m2jb9gbXD4a4IQv246edmfyefiz9G1Iwtgv5imcNun5MDsf/fslpENdUaRautz8RF6wgujW5WTFMxVgyt32ijWxXpd3KkRXqzv1MDGYTyxX4iGMsuWb08+HPUnrbJjlFECQy2Hqq00BiuNtmlM+Q9iBkt6tecjkZuAOpkRUinab8Wk6wz5EtaR4aCVE7F7UJkqq480aelsLUfrdxwqhbMA+VmKvjyoKOByU1bS5Z3LR1tPpT+NsXNNycUnB3lH4xGoH6tidmIJg+W24wTsLszCJwydU+XxiCDQaQOJOEQXT2vzZtrzdP7kN2490LP7D7/lKDcrz1N/9MNugLuCGdPDsaS5oedjtbWfjwjhX6/tvDNAaDw8LCKI3r+IBWsEC8HcgJc5Nw+uBx059PP4ZgJSwfGqgpT8SqHx6aKKnmq8VemQwsCQtfBhf4eySCobi4WjM/pj541YuHr4XcthtaTE=
 dist: trusty
 sudo: false
-
 language: node_js
 node_js:
-  - '12'
-
+- '12'
 cache:
   directories:
-    - ./node_modules
-
+  - "./node_modules"
 before_script:
-  - npm install -g @angular/cli
-  
+- npm install -g @angular/cli
 install:
-  - npm install
-
+- npm install
 script:
-  - npm build --prod
-
+- npm build --prod
 deploy:
   provider: s3
-  bucket: "vehicle-app"
-  skip_cleanup: true
+  access_key_id: AKIAZI2XPVLMZ6IN3ZLF
+  secret_access_key:
+    secure: IQPmmyd7YjfJ4hv1JaRK44jF+qd69h+LDgFFmACQoD0mTAQvd4DBodG0w95pQcc4ooxKCzywaPNz6UvnmwnqiRy2wzmdJ614lhpExyPgaY38abdAQ0QGdv4UqjgvBS4u8//MJPAtwnYVkzP1XYi5V7tAr90Ov8ZFbxWUvVYRy2ERl/fDlJmady6ZbH5+zCFqtG8gJ1RE2MBiCG3ac3FEU6NN6zg+1mqgQExR9TvbjZcQOEbnuW80WSEVBnyLj/R+vBbAdvCdSdcHmiFFCgnPREtmGXFjPCNrk9E+SH8yuaDVZyH9CUUs/eXfqwT13bae49hCAXKuckSkTH7kmk+BJ7bfayva/YwlDb4wR5noE3gU6eJmo6iDYtvZTzJB+90UKQrzSmIzDTjiB2j3qW6+iSdsq/11c5K7sjadUsS03mpnVl20sW2GH1oYuPMMOYOyUVbqjA6R701syrIpbx2uWVxurFoEg7E7vMj2Iuu4k2RbHVMovUjcoZebU5BvIcRDBTVj1IEeLmcK6kmi89V8iUVistEFoRbBnPfosmwths6GBv1wDowKd364dAb0rFmqtfn8OTSq5rxnFxlo6JKkEn2Z5aHKhXLDCzZKLYxlsMFQKahPpi4i0gFyqPlufJefZgeNPzSp82Y/N/pMKyX+O39iy1YBBdzL+gga7X/FmH4=
+  bucket: vehicle-app
+  local-dir: dist
   acl: public_read
+  skip_cleanup: true
   region: us-east-2
-  local_dir: dist
+  on:
+    repo: hanuj2ee/vehicle-app
