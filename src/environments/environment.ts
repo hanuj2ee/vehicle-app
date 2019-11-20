@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   backend: {
-    baseURL:"http://2f6c1909-default-vsaingres-932c-2119165649.us-east-2.elb.amazonaws.com"#update this
+    baseURL:"http://2f6c1909-default-vsaingres-932c-2119165649.us-east-2.elb.amazonaws.com"
   }  
 };
 
